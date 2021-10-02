@@ -1,51 +1,72 @@
-/**
- * Project OOP3200-F2020-Lesson4
- * @author Tom Tsiliopoulos
- * @version 1.0
- */
+/*
+    Author: Gaelen Rhoads and Tom Tsiliopoulos
+    Student ID : 100804776
+
+    Date: October 1, 2021
+    Project : ICE 3
+    File Name : Professor.cpp
+*/
 
 
 #include "Professor.h"
+
+
+#include <iostream>
+#include <utility>
 
 /**
  * Professor implementation
  */
 
 
-/**
- * @param first_name
- * @param last_name
- * @param age
- * @param employee_id
- */
-void Professor::Professor(string first_name, string last_name, float age, string employee_id) {
-
+ /**
+  * @param first_name
+  * @param last_name
+  * @param age
+  * @param employee_id
+  */
+Professor::Professor(const std::string& first_name, const std::string& last_name, const float age, std::string employee_id) :
+    Person(first_name, last_name, age), m_employeeID(std::move(employee_id))
+{
 }
 
+Professor::~Professor()
+= default;
+
 /**
- * @return string
+ * @return std::string
  */
-string Professor::getEmployeeID() {
-    return "";
+std::string Professor::getEmployeeID() const
+{
+    return m_employeeID;
 }
 
 /**
  * @param value
  */
-void Professor::setEmployeeID(string value) {
-
+void Professor::setEmployeeID(const std::string & value)
+{
+    m_employeeID = value;
 }
 
 /**
  * @return void
  */
-void Professor::Teaches() {
-    return;
+void Professor::Teaches() const
+{
+    std::cout << getFirstName() << " is teaching!" << std::endl;
 }
 
 /**
- * @return string
+ * @return std::string
  */
-string Professor::ToString() {
-    return "";
+std::string Professor::ToString() {
+    std::string output_string;
+
+    output_string += Person::ToString();
+    output_string += "---------------------------------------\n";
+    output_string += "Employee ID: " + getEmployeeID() + "\n";
+    output_string += "---------------------------------------\n";
+
+    return output_string;
 }

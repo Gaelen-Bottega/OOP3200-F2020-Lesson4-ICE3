@@ -5,6 +5,7 @@
     Date: October 1, 2021
     Project : ICE 3
     File Name : main.cpp
+	Description: This ICE demonstrates the use of multiple classes and inheritance and polymorphism. 
 */
 #include <iostream>
 #include <vector>
